@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: shinobi
+    image: xenomii/shinobi:1.1
+    restart: always
+    tty: true
