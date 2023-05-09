@@ -1,8 +1,8 @@
-#Shinobi
+# Shinobi
 
 Shinobi will contain a series of features that will help testers collect information about a target by using passive techniques (i.e., subdomain enumeration, google dorking, OSINT, dark web search etc.). Once the information has been collated together, the tool will proceed to assess the target’s weaknesses by providing Common Vulnerabilities and Exposure (CVE) numbers from the National Vulnerability Database (NVD) (i.e., identifying vulnerabilities and possible attack vectors).
 
-#Features
+# Features
 
 Shinobi will focus on acheiving the following features: 
 1. Automatically identify domains and subdomains of the target web application
