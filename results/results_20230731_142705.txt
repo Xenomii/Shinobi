@@ -1,0 +1,60 @@
+[93m
+     _                 _____ 
+    | |               |  ___|
+  __| | ___  _ __ ___ | |__  
+ / _` |/ _ \| '_ ` _ \|  __| 
+| (_| | (_) | | | | | | |___ 
+ \__,_|\___/|_| |_| |_\____/[91m   by vadi @ securihub.com
+				v1.1
+[0m
+[94mATTACK INFORMATION:
+[94mTarget: [0mhackerone.com
+[94mMode: [0mpassive
+[94mThreads: [0m25
+[94mResolvers: [0m1.1.1.1, 9.9.9.9, 8.8.8.8, 1.0.0.1, 208.67.222.222, 8.8.4.4, 149.112.112.11
+[94mScan started: [0m31/07/2023 14:26:26
+[91m
+[!] You selected passive mode. The subdomain will NOT be tested to ensure they are still available
+[94m[+] Running passive mode:
+[93m
+[!] File config.api not found in current directory
+[93m[!] No API Tokens detected. Running free OSINT engines...
+[92m[+] Found new: a.ns.hackerone.com
+[92m[+] Found new: b.ns.hackerone.com
+[92m[+] Found new: support.hackerone.com
+[92m[+] Found new: links.hackerone.com
+[92m[+] Found new: api.hackerone.com
+[92m[+] Found new: go.hackerone.com
+[92m[+] Found new: info.hackerone.com
+[92m[+] Found new: mta-sts.managed.hackerone.com
+[92m[+] Found new: mta-sts.hackerone.com
+[92m[+] Found new: docs.hackerone.com
+[92m[+] Found new: mta-sts.forwarding.hackerone.com
+[92m[+] Found new: events.hackerone.com
+[92m[+] Found new: gslink.hackerone.com
+
+[93m{
+    "hackerone.com": [
+        {
+            "no_ip_because_of_passive_mode": [
+                "a.ns.hackerone.com",
+                "b.ns.hackerone.com",
+                "support.hackerone.com",
+                "links.hackerone.com",
+                "api.hackerone.com",
+                "go.hackerone.com",
+                "info.hackerone.com",
+                "mta-sts.managed.hackerone.com",
+                "mta-sts.hackerone.com",
+                "docs.hackerone.com",
+                "mta-sts.forwarding.hackerone.com",
+                "events.hackerone.com",
+                "gslink.hackerone.com"
+            ]
+        }
+    ]
+}
+[0m
+[+] 13[94m unique subdomains found
+
+[+] Program finished at 31/07/2023 14:27:05
