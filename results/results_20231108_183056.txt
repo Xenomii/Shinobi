@@ -1,0 +1,468 @@
+
+City: Singapore
+Region: Singapore
+Country: SG
+ISP: AS16509 Amazon.com, Inc.
+Organization: Amazon Data Services Singapore
+Operating System: None
+
+Open Ports:
+Port: 80 - Service: N/A
+Port: 443 - Service: N/A
+
+Vulnerabilities:
+
+CVE ID: CVE-2022-36760
+Description: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to.  This issue affects Apache HTTP Server Apache HTTP Server 2.4 version 2.4.54 and prior versions.
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-444
+CVSS Base Score: 9.0
+
+CVE ID: CVE-2022-2097
+Description: AES OCB mode for 32-bit x86 platforms using the AES-NI assembly optimised implementation will not encrypt the entirety of the data under some circumstances. This could reveal sixteen bytes of data that was preexisting in the memory that wasn't written. In the special case of "in place" encryption, sixteen bytes of the plaintext would be revealed. Since OpenSSL does not support OCB based cipher suites for TLS and DTLS, they are both unaffected. Fixed in OpenSSL 3.0.5 (Affected 3.0.0-3.0.4). Fixed in OpenSSL 1.1.1q (Affected 1.1.1-1.1.1p).
+URL: https://www.openssl.org/news/secadv/20220705.txt
+CWE: CWE-327
+CVSS Base Score: 5.3
+
+CVE ID: CVE-2023-27522
+Description: HTTP Response Smuggling vulnerability in Apache HTTP Server via mod_proxy_uwsgi. This issue affects Apache HTTP Server: from 2.4.30 through 2.4.55.
+
+Special characters in the origin response header can truncate/split the response forwarded to the client.
+
+
+
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-444
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2022-4304
+Description: A timing based side channel exists in the OpenSSL RSA Decryption implementation
+which could be sufficient to recover a plaintext across a network in a
+Bleichenbacher style attack. To achieve a successful decryption an attacker
+would have to be able to send a very large number of trial messages for
+decryption. The vulnerability affects all RSA padding modes: PKCS#1 v1.5,
+RSA-OEAP and RSASVE.
+
+For example, in a TLS connection, RSA is commonly used by a client to send an
+encrypted pre-master secret to the server. An attacker that had observed a
+genuine connection between a client and a server could use this flaw to send
+trial messages to the server and record the time taken to process them. After a
+sufficiently large number of messages the attacker could recover the pre-master
+secret used for the original connection and thus be able to decrypt the
+application data sent over that connection.
+
+
+URL: https://www.openssl.org/news/secadv/20230207.txt
+CWE: CWE-203
+CVSS Base Score: 5.9
+
+CVE ID: CVE-2022-22720
+Description: Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are encountered discarding the request body, exposing the server to HTTP Request Smuggling
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-444
+CVSS Base Score: 9.8
+
+CVE ID: CVE-2022-28330
+Description: Apache HTTP Server 2.4.53 and earlier on Windows may read beyond bounds when configured to process requests with the mod_isapi module.
+URL: http://www.openwall.com/lists/oss-security/2022/06/08/3
+CWE: CWE-125
+CVSS Base Score: 5.3
+
+CVE ID: CVE-2022-4450
+Description: The function PEM_read_bio_ex() reads a PEM file from a BIO and parses and
+decodes the "name" (e.g. "CERTIFICATE"), any header data and the payload data.
+If the function succeeds then the "name_out", "header" and "data" arguments are
+populated with pointers to buffers containing the relevant decoded data. The
+caller is responsible for freeing those buffers. It is possible to construct a
+PEM file that results in 0 bytes of payload data. In this case PEM_read_bio_ex()
+will return a failure code but will populate the header argument with a pointer
+to a buffer that has already been freed. If the caller also frees this buffer
+then a double free will occur. This will most likely lead to a crash. This
+could be exploited by an attacker who has the ability to supply malicious PEM
+files for parsing to achieve a denial of service attack.
+
+The functions PEM_read_bio() and PEM_read() are simple wrappers around
+PEM_read_bio_ex() and therefore these functions are also directly affected.
+
+These functions are also called indirectly by a number of other OpenSSL
+functions including PEM_X509_INFO_read_bio_ex() and
+SSL_CTX_use_serverinfo_file() which are also vulnerable. Some OpenSSL internal
+uses of these functions are not vulnerable because the caller does not free the
+header argument if PEM_read_bio_ex() returns a failure code. These locations
+include the PEM_read_bio_TYPE() functions as well as the decoders introduced in
+OpenSSL 3.0.
+
+The OpenSSL asn1parse command line application is also impacted by this issue.
+
+
+
+URL: https://www.openssl.org/news/secadv/20230207.txt
+CWE: CWE-415
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2022-1292
+Description: The c_rehash script does not properly sanitise shell metacharacters to prevent command injection. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. Fixed in OpenSSL 3.0.3 (Affected 3.0.0,3.0.1,3.0.2). Fixed in OpenSSL 1.1.1o (Affected 1.1.1-1.1.1n). Fixed in OpenSSL 1.0.2ze (Affected 1.0.2-1.0.2zd).
+URL: https://www.openssl.org/news/secadv/20220503.txt
+CWE: CWE-78
+CVSS Base Score: 9.8
+
+CVE ID: CVE-2022-22721
+Description: If LimitXMLRequestBody is set to allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later causes out of bounds writes. This issue affects Apache HTTP Server 2.4.52 and earlier.
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-190
+CVSS Base Score: 9.1
+
+CVE ID: CVE-2006-20001
+Description: A carefully crafted If: request header can cause a memory read, or write of a single zero byte, in a pool (heap) memory location beyond the header value sent. This could cause the process to crash.
+
+This issue affects Apache HTTP Server 2.4.54 and earlier.
+
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-787
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2022-2068
+Description: In addition to the c_rehash shell command injection identified in CVE-2022-1292, further circumstances where the c_rehash script does not properly sanitise shell metacharacters to prevent command injection were found by code review. When the CVE-2022-1292 was fixed it was not discovered that there are other places in the script where the file names of certificates being hashed were possibly passed to a command executed through the shell. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. Fixed in OpenSSL 3.0.4 (Affected 3.0.0,3.0.1,3.0.2,3.0.3). Fixed in OpenSSL 1.1.1p (Affected 1.1.1-1.1.1o). Fixed in OpenSSL 1.0.2zf (Affected 1.0.2-1.0.2ze).
+URL: https://www.openssl.org/news/secadv/20220621.txt
+CWE: CWE-78
+CVSS Base Score: 9.8
+
+CVE ID: CVE-2023-0464
+Description: A security vulnerability has been identified in all supported versions
+
+of OpenSSL related to the verification of X.509 certificate chains
+that include policy constraints.  Attackers may be able to exploit this
+vulnerability by creating a malicious certificate chain that triggers
+exponential use of computational resources, leading to a denial-of-service
+(DoS) attack on affected systems.
+
+Policy processing is disabled by default but can be enabled by passing
+the `-policy' argument to the command line utilities or by calling the
+`X509_VERIFY_PARAM_set1_policies()' function.
+URL: https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545
+CWE: CWE-295
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2023-0465
+Description: Applications that use a non-default option when verifying certificates may be
+vulnerable to an attack from a malicious CA to circumvent certain checks.
+
+Invalid certificate policies in leaf certificates are silently ignored by
+OpenSSL and other certificate policy checks are skipped for that certificate.
+A malicious CA could use this to deliberately assert invalid certificate policies
+in order to circumvent policy checking on the certificate altogether.
+
+Policy processing is disabled by default but can be enabled by passing
+the `-policy' argument to the command line utilities or by calling the
+`X509_VERIFY_PARAM_set1_policies()' function.
+URL: https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=facfb1ab745646e97a1920977ae4a9965ea61d5c
+CWE: CWE-295
+CVSS Base Score: 5.3
+
+CVE ID: CVE-2023-0466
+Description: The function X509_VERIFY_PARAM_add0_policy() is documented to
+implicitly enable the certificate policy check when doing certificate
+verification. However the implementation of the function does not
+enable the check which allows certificates with invalid or incorrect
+policies to pass the certificate verification.
+
+As suddenly enabling the policy check could break existing deployments it was
+decided to keep the existing behavior of the X509_VERIFY_PARAM_add0_policy()
+function.
+
+Instead the applications that require OpenSSL to perform certificate
+policy check need to use X509_VERIFY_PARAM_set1_policies() or explicitly
+enable the policy check by calling X509_VERIFY_PARAM_set_flags() with
+the X509_V_FLAG_POLICY_CHECK flag argument.
+
+Certificate policy checks are disabled by default in OpenSSL and are not
+commonly used by applications.
+URL: https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=73398dea26de9899fb4baa94098ad0a61f435c72
+CWE: CWE-295
+CVSS Base Score: 5.3
+
+CVE ID: CVE-2022-37436
+Description: Prior to Apache HTTP Server 2.4.55, a malicious backend can cause the response headers to be truncated early, resulting in some headers being incorporated into the response body. If the later headers have any security purpose, they will not be interpreted by the client.
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-113
+CVSS Base Score: 5.3
+
+CVE ID: CVE-2022-31813
+Description: Apache HTTP Server 2.4.53 and earlier may not send the X-Forwarded-* headers to the origin server based on client side Connection header hop-by-hop mechanism. This may be used to bypass IP based authentication on the origin server/application.
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-345
+CVSS Base Score: 9.8
+
+CVE ID: CVE-2022-23943
+Description: Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows an attacker to overwrite heap memory with possibly attacker provided data. This issue affects Apache HTTP Server 2.4 version 2.4.52 and prior versions.
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-787
+CVSS Base Score: 9.8
+
+CVE ID: CVE-2023-0286
+Description: There is a type confusion vulnerability relating to X.400 address processing
+inside an X.509 GeneralName. X.400 addresses were parsed as an ASN1_STRING but
+the public structure definition for GENERAL_NAME incorrectly specified the type
+of the x400Address field as ASN1_TYPE. This field is subsequently interpreted by
+the OpenSSL function GENERAL_NAME_cmp as an ASN1_TYPE rather than an
+ASN1_STRING.
+
+When CRL checking is enabled (i.e. the application sets the
+X509_V_FLAG_CRL_CHECK flag), this vulnerability may allow an attacker to pass
+arbitrary pointers to a memcmp call, enabling them to read memory contents or
+enact a denial of service. In most cases, the attack requires the attacker to
+provide both the certificate chain and CRL, neither of which need to have a
+valid signature. If the attacker only controls one of these inputs, the other
+input must already contain an X.400 address as a CRL distribution point, which
+is uncommon. As such, this vulnerability is most likely to only affect
+applications which have implemented their own functionality for retrieving CRLs
+over a network.
+
+
+URL: https://www.openssl.org/news/secadv/20230207.txt
+CWE: CWE-843
+CVSS Base Score: 7.4
+
+CVE ID: CVE-2023-3817
+Description: Issue summary: Checking excessively long DH keys or parameters may be very slow.
+
+Impact summary: Applications that use the functions DH_check(), DH_check_ex()
+or EVP_PKEY_param_check() to check a DH key or DH parameters may experience long
+delays. Where the key or parameters that are being checked have been obtained
+from an untrusted source this may lead to a Denial of Service.
+
+The function DH_check() performs various checks on DH parameters. After fixing
+CVE-2023-3446 it was discovered that a large q parameter value can also trigger
+an overly long computation during some of these checks. A correct q value,
+if present, cannot be larger than the modulus p parameter, thus it is
+unnecessary to perform these checks if q is larger than p.
+
+An application that calls DH_check() and supplies a key or parameters obtained
+from an untrusted source could be vulnerable to a Denial of Service attack.
+
+The function DH_check() is itself called by a number of other OpenSSL functions.
+An application calling any of those other functions may similarly be affected.
+The other functions affected by this are DH_check_ex() and
+EVP_PKEY_param_check().
+
+Also vulnerable are the OpenSSL dhparam and pkeyparam command line applications
+when using the "-check" option.
+
+The OpenSSL SSL/TLS implementation is not affected by this issue.
+
+The OpenSSL 3.0 and 3.1 FIPS providers are not affected by this issue.
+URL: https://www.openssl.org/news/secadv/20230731.txt
+CWE: CWE-834
+CVSS Base Score: 5.3
+
+CVE ID: CVE-2023-4807
+Description: Issue summary: The POLY1305 MAC (message authentication code) implementation
+contains a bug that might corrupt the internal state of applications on the
+Windows 64 platform when running on newer X86_64 processors supporting the
+AVX512-IFMA instructions.
+
+Impact summary: If in an application that uses the OpenSSL library an attacker
+can influence whether the POLY1305 MAC algorithm is used, the application
+state might be corrupted with various application dependent consequences.
+
+The POLY1305 MAC (message authentication code) implementation in OpenSSL does
+not save the contents of non-volatile XMM registers on Windows 64 platform
+when calculating the MAC of data larger than 64 bytes. Before returning to
+the caller all the XMM registers are set to zero rather than restoring their
+previous content. The vulnerable code is used only on newer x86_64 processors
+supporting the AVX512-IFMA instructions.
+
+The consequences of this kind of internal application state corruption can
+be various - from no consequences, if the calling application does not
+depend on the contents of non-volatile XMM registers at all, to the worst
+consequences, where the attacker could get complete control of the application
+process. However given the contents of the registers are just zeroized so
+the attacker cannot put arbitrary values inside, the most likely consequence,
+if any, would be an incorrect result of some application dependent
+calculations or a crash leading to a denial of service.
+
+The POLY1305 MAC algorithm is most frequently used as part of the
+CHACHA20-POLY1305 AEAD (authenticated encryption with associated data)
+algorithm. The most common usage of this AEAD cipher is with TLS protocol
+versions 1.2 and 1.3 and a malicious client can influence whether this AEAD
+cipher is used by the server. This implies that server applications using
+OpenSSL can be potentially impacted. However we are currently not aware of
+any concrete application that would be affected by this issue therefore we
+consider this a Low severity security issue.
+
+As a workaround the AVX512-IFMA instructions support can be disabled at
+runtime by setting the environment variable OPENSSL_ia32cap:
+
+   OPENSSL_ia32cap=:~0x200000
+
+The FIPS provider is not affected by this issue.
+URL: https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=a632d534c73eeb3e3db8c7540d811194ef7c79ff
+CWE: NVD-CWE-noinfo
+CVSS Base Score: 7.8
+
+CVE ID: CVE-2023-25690
+Description: Some mod_proxy configurations on Apache HTTP Server versions 2.4.0 through 2.4.55 allow a HTTP Request Smuggling attack.
+
+
+
+
+Configurations are affected when mod_proxy is enabled along with some form of RewriteRule
+ or ProxyPassMatch in which a non-specific pattern matches
+ some portion of the user-supplied request-target (URL) data and is then
+ re-inserted into the proxied request-target using variable 
+substitution. For example, something like:
+
+
+
+
+RewriteEngine on
+RewriteRule "^/here/(.*)" "http://example.com:8080/elsewhere?$1"; [P]
+ProxyPassReverse /here/ http://example.com:8080/
+
+
+Request splitting/smuggling could result in bypass of access controls in the proxy server, proxying unintended URLs to existing origin servers, and cache poisoning. Users are recommended to update to at least version 2.4.56 of Apache HTTP Server.
+
+
+
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-444
+CVSS Base Score: 9.8
+
+CVE ID: CVE-2021-44790
+Description: A carefully crafted request body can cause a buffer overflow in the mod_lua multipart parser (r:parsebody() called from Lua scripts). The Apache httpd team is not aware of an exploit for the vulnerabilty though it might be possible to craft one. This issue affects Apache HTTP Server 2.4.51 and earlier.
+URL: http://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-787
+CVSS Base Score: 9.8
+
+CVE ID: CVE-2022-26377
+Description: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to. This issue affects Apache HTTP Server Apache HTTP Server 2.4 version 2.4.53 and prior versions.
+URL: http://www.openwall.com/lists/oss-security/2022/06/08/2
+CWE: CWE-444
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2022-28614
+Description: The ap_rwrite() function in Apache HTTP Server 2.4.53 and earlier may read unintended memory if an attacker can cause the server to reflect very large input using ap_rwrite() or ap_rputs(), such as with mod_luas r:puts() function. Modules compiled and distributed separately from Apache HTTP Server that use the 'ap_rputs' function and may pass it a very large (INT_MAX or larger) string must be compiled against current headers to resolve the issue.
+URL: http://www.openwall.com/lists/oss-security/2022/06/08/4
+CWE: CWE-190
+CVSS Base Score: 5.3
+
+CVE ID: CVE-2023-2650
+Description: Issue summary: Processing some specially crafted ASN.1 object identifiers or
+data containing them may be very slow.
+
+Impact summary: Applications that use OBJ_obj2txt() directly, or use any of
+the OpenSSL subsystems OCSP, PKCS7/SMIME, CMS, CMP/CRMF or TS with no message
+size limit may experience notable to very long delays when processing those
+messages, which may lead to a Denial of Service.
+
+An OBJECT IDENTIFIER is composed of a series of numbers - sub-identifiers -
+most of which have no size limit.  OBJ_obj2txt() may be used to translate
+an ASN.1 OBJECT IDENTIFIER given in DER encoding form (using the OpenSSL
+type ASN1_OBJECT) to its canonical numeric text form, which are the
+sub-identifiers of the OBJECT IDENTIFIER in decimal form, separated by
+periods.
+
+When one of the sub-identifiers in the OBJECT IDENTIFIER is very large
+(these are sizes that are seen as absurdly large, taking up tens or hundreds
+of KiBs), the translation to a decimal number in text may take a very long
+time.  The time complexity is O(n^2) with 'n' being the size of the
+sub-identifiers in bytes (*).
+
+With OpenSSL 3.0, support to fetch cryptographic algorithms using names /
+identifiers in string form was introduced.  This includes using OBJECT
+IDENTIFIERs in canonical numeric text form as identifiers for fetching
+algorithms.
+
+Such OBJECT IDENTIFIERs may be received through the ASN.1 structure
+AlgorithmIdentifier, which is commonly used in multiple protocols to specify
+what cryptographic algorithm should be used to sign or verify, encrypt or
+decrypt, or digest passed data.
+
+Applications that call OBJ_obj2txt() directly with untrusted data are
+affected, with any version of OpenSSL.  If the use is for the mere purpose
+of display, the severity is considered low.
+
+In OpenSSL 3.0 and newer, this affects the subsystems OCSP, PKCS7/SMIME,
+CMS, CMP/CRMF or TS.  It also impacts anything that processes X.509
+certificates, including simple things like verifying its signature.
+
+The impact on TLS is relatively low, because all versions of OpenSSL have a
+100KiB limit on the peer's certificate chain.  Additionally, this only
+impacts clients, or servers that have explicitly enabled client
+authentication.
+
+In OpenSSL 1.1.1 and 1.0.2, this only affects displaying diverse objects,
+such as X.509 certificates.  This is assumed to not happen in such a way
+that it would cause a Denial of Service, so these versions are considered
+not affected by this issue in such a way that it would be cause for concern,
+and the severity is therefore considered low.
+URL: https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=423a2bc737a908ad0c77bda470b2b59dc879936b
+CWE: CWE-770
+CVSS Base Score: 6.5
+
+CVE ID: CVE-2023-0215
+Description: The public API function BIO_new_NDEF is a helper function used for streaming
+ASN.1 data via a BIO. It is primarily used internally to OpenSSL to support the
+SMIME, CMS and PKCS7 streaming capabilities, but may also be called directly by
+end user applications.
+
+The function receives a BIO from the caller, prepends a new BIO_f_asn1 filter
+BIO onto the front of it to form a BIO chain, and then returns the new head of
+the BIO chain to the caller. Under certain conditions, for example if a CMS
+recipient public key is invalid, the new filter BIO is freed and the function
+returns a NULL result indicating a failure. However, in this case, the BIO chain
+is not properly cleaned up and the BIO passed by the caller still retains
+internal pointers to the previously freed filter BIO. If the caller then goes on
+to call BIO_pop() on the BIO then a use-after-free will occur. This will most
+likely result in a crash.
+
+
+
+This scenario occurs directly in the internal function B64_write_ASN1() which
+may cause BIO_new_NDEF() to be called and will subsequently call BIO_pop() on
+the BIO. This internal function is in turn called by the public API functions
+PEM_write_bio_ASN1_stream, PEM_write_bio_CMS_stream, PEM_write_bio_PKCS7_stream,
+SMIME_write_ASN1, SMIME_write_CMS and SMIME_write_PKCS7.
+
+Other public API functions that may be impacted by this include
+i2d_ASN1_bio_stream, BIO_new_CMS, BIO_new_PKCS7, i2d_CMS_bio_stream and
+i2d_PKCS7_bio_stream.
+
+The OpenSSL cms and smime command line applications are similarly affected.
+
+
+
+
+URL: https://www.openssl.org/news/secadv/20230207.txt
+CWE: CWE-416
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2022-29404
+Description: In Apache HTTP Server 2.4.53 and earlier, a malicious request to a lua script that calls r:parsebody(0) may cause a denial of service due to no default limit on possible input size.
+URL: http://www.openwall.com/lists/oss-security/2022/06/08/5
+CWE: CWE-770
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2021-44224
+Description: A crafted URI sent to httpd configured as a forward proxy (ProxyRequests on) can cause a crash (NULL pointer dereference) or, for configurations mixing forward and reverse proxy declarations, can allow for requests to be directed to a declared Unix Domain Socket endpoint (Server Side Request Forgery). This issue affects Apache HTTP Server 2.4.7 up to 2.4.51 (included).
+URL: http://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-476
+CVSS Base Score: 8.2
+
+CVE ID: CVE-2022-28615
+Description: Apache HTTP Server 2.4.53 and earlier may crash or disclose information due to a read beyond bounds in ap_strcmp_match() when provided with an extremely large input buffer. While no code distributed with the server can be coerced into such a call, third-party modules or lua scripts that use ap_strcmp_match() may hypothetically be affected.
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-190
+CVSS Base Score: 9.1
+
+CVE ID: CVE-2022-30556
+Description: Apache HTTP Server 2.4.53 and earlier may return lengths to applications calling r:wsread() that point past the end of the storage allocated for the buffer.
+URL: http://www.openwall.com/lists/oss-security/2022/06/08/7
+CWE: NVD-CWE-Other
+CVSS Base Score: 7.5
+
+CVE ID: CVE-2022-22719
+Description: A carefully crafted request body can cause a read to a random memory area which could cause the process to crash. This issue affects Apache HTTP Server 2.4.52 and earlier.
+URL: https://httpd.apache.org/security/vulnerabilities_24.html
+CWE: CWE-665
+CVSS Base Score: 7.5
