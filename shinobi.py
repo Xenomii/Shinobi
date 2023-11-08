@@ -91,11 +91,17 @@ def use_shodan(ip):
             file.write(f"\nOrganization: {host_info.get('org', 'N/A')}")
             file.write(f"\nOperating System: {host_info.get('os', 'N/A')}")
 
+            results = host_info['data']
+
             file.write("\n\nOpen Ports:")
-            for item in host_info['data']:
-                port = item['port']
-                service = item.get('banner', 'N/A')
-                file.write(f"\nPort: {port} - Service: {service}")
+            for item in results:
+                open_port = item['port']
+                file.write(f"\n{open_port}\n")
+                for x in range(len(results)):
+                    port = results[x].get('port')
+                    if open_port == port:
+                        file.write(results[x].get('data'))
+
 
             file.write("\n\nVulnerabilities:\n")
             vuln_info = host_info.get('vulns', 'No vulnerabilities found')

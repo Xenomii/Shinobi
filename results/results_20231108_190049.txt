@@ -7,8 +7,8 @@ Organization: Amazon Data Services Singapore
 Operating System: None
 
 Open Ports:
-Port: 80 - Service: N/A
-Port: 443 - Service: N/A
+80
+443
 
 Vulnerabilities:
 
